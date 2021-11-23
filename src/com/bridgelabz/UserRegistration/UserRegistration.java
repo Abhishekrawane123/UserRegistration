@@ -12,11 +12,19 @@ public class UserRegistration {
 		System.out.print("Enter Last Name:");
 		String lastName = sc.next();
 		System.out.println(Name(lastName));
-
+		System.out.print("Enter Email:");
+		String email=sc.next();
+		System.out.println(isValidEmail(email));
 	}
 
-	private static boolean Name(String Name) {
+	private static boolean isValidEmail(String email) {
+		
+		return email.matches("^([A-Za-z]{3,})[0-9a-zA-Z]+(@)+[a-z0-9]+(.)+[a-z]{2,}$");
+		
+	}
 
-		return Name.matches("^([A-Z]{1}+[a-z]{2,})*$");
+	private static boolean Name(String name) {
+
+		return name.matches("^([A-Z]{1}+[a-z]{2,})*$");
 	}
 }
