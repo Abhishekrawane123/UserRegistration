@@ -7,14 +7,16 @@ public class UserRegistration {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter First Name:");
-		String name1 = sc.next();
-		System.out.println(firstName(name1));
+		String firstName = sc.next();
+		System.out.println(Name(firstName));
+		System.out.print("Enter Last Name:");
+		String lastName = sc.next();
+		System.out.println(Name(lastName));
 
 	}
 
-	private static boolean firstName(String firstName) {
+	private static boolean Name(String Name) {
 
-		return firstName.matches("^([A-Z]{1}+[a-z]{2,})*$");
+		return Name.matches("^([A-Z]{1}+[a-z]{2,})*$");
 	}
-
 }
