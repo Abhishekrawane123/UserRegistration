@@ -17,9 +17,22 @@ public class UserRegistration {
 		System.out.print("Enter Email:");
 		String email=sc.next();
 		System.out.println(isValidEmail(email));
-		System.out.print("Enter PhoneNumber:");
-		String phoneNumber=sc.nextLine();
-		System.out.println(isValidPhoneNumber(phoneNumber));
+		
+		System.out.print("Enter Password:");
+		String password=sc.next();
+		System.out.println(isValidPassword(password));
+		System.out.println("Enter PhoneNumber:");
+		String phoneNumber1=sc.next();
+		String phoneNumber2=sc.next();
+		String phoneNumber=phoneNumber1+" "+phoneNumber2;
+//		System.out.println(phoneNumber1+""+phoneNumber2+"="+phoneNumber);
+			
+		System.out.print(isValidPhoneNumber(phoneNumber));
+	}
+
+	private static Boolean isValidPassword(String password) {//rule
+		String rule1="^[A-Za-z]{8,}$";
+		return password.matches(rule1);
 	}
 
 	private static Boolean isValidPhoneNumber(String phoneNumber) {
