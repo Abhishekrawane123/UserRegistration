@@ -1,56 +1,63 @@
 package com.bridgelabz.UserRegistration;
 
-public class UserRegistration {
+public class UserRegistration 
+{
+		public static UserRegistration instance;
+		private String firstName;
+		private String lastName;
+		private String email;
+		private String password;
+		private String phoneNumber;
 
-	String firstName;
-	String LastName;
-	String phoneNumber;
-	String eMail;
-	String password;
+		public UserRegistration() {
 
-	public String getFirstName() {
-		return firstName;
-	}
+		}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+		public static UserRegistration getInstance() {
+			if (instance == null) {
+				instance = new UserRegistration();
+			}
+			return instance;
+		}
 
-	public String getLastName() {
-		return LastName;
-	}
+		public String getFirstName() {
+			return firstName;
+		}
 
-	public void setLastName(String lastName) {
-		LastName = lastName;
-	}
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
+		public String getLastName() {
+			return lastName;
+		}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
 
-	public String geteMail() {
-		return eMail;
-	}
+		public String getEmail() {
+			return email;
+		}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
+		public void setEmail(String email) {
+			this.email = email;
+		}
 
-	public String getPassword() {
-		return password;
-	}
+		public String getPassword() {
+			return password;
+		}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+		public void setPassword(String password) {
+			this.password = password;
+		}
 
-	@Override
-	public String toString() {
-		return "UserRegistration [firstName=" + firstName + ", LastName=" + LastName + ", phoneNumber=" + phoneNumber
-				+ ", eMail=" + eMail + ", password=" + password + "]";
-	}
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+
 }

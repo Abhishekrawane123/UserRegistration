@@ -1,123 +1,149 @@
 package com.bridgelabz.UserRegistration;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class PatternCheck {
+	public static PatternCheck instance;
+	private static final String EMAIL_PATTERN = "^[0-9a-zA-Z+-._]+@[0-9a-zA-Z]+.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$";
+	private static final String NAME_PATTERN = "^([A-Z]{1}+[a-z]{2,})*$";
+	private static final String PHONE_NUMBER_PATTERN = "^([0-9]{1,2})\\s([0-9]{10})$";
+	private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@|#|$|%|^|&|-|+|=|(|)|])(?=\\S+$).{8,}$";
+	Scanner sc = new Scanner(System.in);
 
-	UserRegistration registration = new UserRegistration();
+	private PatternCheck() {
 
-	public void firstNamePattern() {
+	}
 
-		String pattern = "^[A-Z]{1}[a-z]{2,}";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter first name");
-
-		while (true) {
-			String fName = scanner.next();
-			if (Pattern.matches(pattern, fName)) {
-				registration.setFirstName(fName);
-				break;
-			} else
-				System.out.println("enter valid first name as -->Xyz...");
+	public static PatternCheck getInstance() {
+		if (instance == null) {
+			instance = new PatternCheck();
 		}
+		return instance;
 	}
 
-	public void lastNamePattern() {
-
-		String pattern = "^[A-Z]{1}[a-z]{2,}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter last name : ");
-		while (true) {
-			String lName = scanner.next();
-			if (Pattern.matches(pattern, lName)) {
-				registration.setLastName(lName);
-				break;
-			} else
-				System.out.println("enter valid last name as -->Xyz...");
+	public boolean addFirstName(String FirstName) 
+	{
+		UserRegistration userData = UserRegistration.getInstance();
+		userData.setFirstName(FirstName);
+		boolean check = userData.getFirstName().matches(NAME_PATTERN);
+		if (check == true) 
+		{
+			System.out.println("Pattern Match For First Name");
+			return true;
 		}
-	}
-
-	public void printResult() {
-		System.out.println(registration);
-
-	}
-
-	public void emailIdPattern() {
-
-		String pattern = "^[a-zA-Z0-9]+([-_+.a-zA-Z0-9])*@[A-Za-z]+.[A-Za-z]+(.[A-Za-z]{2})*$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enterEmail ID : ");
-		while (true) {
-			String email = scanner.nextLine();
-			if (Pattern.matches(pattern, email)) {
-				registration.setLastName(email);
-				break;
-			} else
-				System.out.println("enter valid email as ");
+		else 
+		{
+			System.out.println("Invalid Name format \nAdd again (Eg:Abhi)");
+			
 		}
+		return false;
 	}
 
-	public void phoneNumber() {
-
-		String pattern = "^[1-9]{2}[\\s][6-9][0-9]{9}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("enter phone number : ");
-		while (true) {
-			String phoneNumber = scanner.nextLine();
-			if (Pattern.matches(pattern, phoneNumber)) {
-				registration.setPhoneNumber(phoneNumber);
-				break;
-			} else
-				System.out.println("enter valid phone number ");
+	public boolean addLastName(String LastName) 
+	{
+		UserRegistration userData = UserRegistration.getInstance();
+		userData.setLastName(LastName);
+		boolean check = userData.getLastName().matches(NAME_PATTERN);
+		if (check == true) 
+		{
+			System.out.println("Pattern Match For Last Name");
+			return true;
 		}
-	}
-
-	public void passwordPattern() {
-
-		String pattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,}$";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println(
-				"enter password with min 8 characters at least one upper case, one digit and one special characters : ");
-		while (true) {
-			String password = scanner.nextLine();
-			if (Pattern.matches(pattern, password)) {
-				registration.setPassword(password);
-				break;
-			} else
-				System.out.println("enter valide password ");
+		else 
+		{
+			System.out.println("Invalid Name format \nAdd again (Eg:Rawane)");
+			
 		}
+		return false;
 	}
 
-	public void sampleEmailsChecking() throws IOException {
-
-		String pattern = "^[a-zA-Z0-9]+([-_+.]?[a-zA-Z0-9])*@[A-Za-z0-9]{1,}.[A-Za-z]{2,}(.[A-Za-z]{2,})*$";
-		String filePath = "C:\\Users\\ABHISHEK RAWANE\\eclipse-workspace\\UserRegistration\\src\\com\\bridgelabz\\UserRegistration\\differentEmails.txt";
-		List<String> lines = new ArrayList<String>();
-		Path path = Paths.get(filePath);
-		lines = Files.readAllLines(path);
-
-		BufferedWriter writer; 
-		writer = new BufferedWriter(new FileWriter("C:\\Users\\ABHISHEK RAWANE\\eclipse-workspace\\UserRegistration\\src\\com\\bridgelabz\\UserRegistration\\differentEmailsResults.txt"));
-		
-		
-		for (String line : lines) {
-			if (Pattern.matches(pattern, line)) {
-				System.out.println("EMAIL ID --> " + line + " --> VALIDE EMAIL");
-				writer.write("EMAIL ID --> " + line + " --> VALIDE EMAIL \n");
-			} else {
-				System.out.println("EMAIL ID --> " + line + " --> INVALIDE EMAIL");
-				writer.write("EMAIL ID --> " + line + " --> INVALIDE EMAIL \n");
-			}
+	public boolean addEmail(String Email) 
+	{
+		UserRegistration userData = UserRegistration.getInstance();
+		userData.setEmail(Email);
+		boolean check = userData.getEmail().matches(NAME_PATTERN);
+		if (check == true) 
+		{
+			System.out.println("Pattern Match For Email");
+			return true;
 		}
-		writer.close();
+		else 
+		{
+			System.out.println("Invalid Name format \nAdd again (Eg:abhishekrawane1195@gmail.com)");
+			
+		}
+		return false;
 	}
+	public boolean addPhoneNumber(String PhoneNumber) 
+	{
+		UserRegistration userData = UserRegistration.getInstance();
+		userData.setPhoneNumber(PhoneNumber);
+		boolean check = userData.getPhoneNumber().matches(NAME_PATTERN);
+		if (check == true) 
+		{
+			System.out.println("Pattern Match For PhoneNumber");
+			return true;
+		}
+		else 
+		{
+			System.out.println("Invalid Name format \nAdd again (Eg:8269585463)");
+			
+		}
+		return false;
+	}
+
+	public boolean addPassword(String Password) 
+	{
+		UserRegistration userData = UserRegistration.getInstance();
+		userData.setPassword(Password);
+		boolean check = userData.getPassword().matches(NAME_PATTERN);
+		if (check == true) 
+		{
+			System.out.println("Pattern Match For Password");
+			return true;
+		}
+		else 
+		{
+			System.out.println("Invalid Name format \nAdd again");
+			
+		}
+		return false;
+	}
+
+//	public boolean readFile() throws FileNotFoundException {
+//		File file = new File(
+//				
+//		Scanner sf = new Scanner(file);
+//
+//		String emails = null;
+//		while (sf.hasNextLine())
+//			emails = sf.nextLine();
+//		System.out.println("Total email:-\n" + emails);
+//
+//		String[] emailArr = emails.split(",");
+//		List<String> validEmail = new ArrayList<>();
+//		List<String> invalidEmail = new ArrayList<>();
+//
+//		for (String a : emailArr) {
+//			boolean check = a.matches(EMAIL_PATTERN);
+//			if (check == true) {
+//				validEmail.add(a);
+//
+//			} else {
+//				invalidEmail.add(a);
+//			}
+//		}
+//		System.out.println("\n-Valid Email- :");
+//		for (String a : validEmail)
+//			System.out.println(a);
+//
+//		System.out.println("\n-InValid Email- :");
+//		for (String a : invalidEmail)
+//			System.out.println(a);
+//		sf.close();
+//	}
 }
