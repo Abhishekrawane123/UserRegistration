@@ -114,36 +114,40 @@ public class PatternCheck {
 		return false;
 	}
 
-//	public boolean readFile() throws FileNotFoundException {
-//		File file = new File(
-//				
-//		Scanner sf = new Scanner(file);
-//
-//		String emails = null;
-//		while (sf.hasNextLine())
-//			emails = sf.nextLine();
-//		System.out.println("Total email:-\n" + emails);
-//
-//		String[] emailArr = emails.split(",");
-//		List<String> validEmail = new ArrayList<>();
-//		List<String> invalidEmail = new ArrayList<>();
-//
-//		for (String a : emailArr) {
-//			boolean check = a.matches(EMAIL_PATTERN);
-//			if (check == true) {
-//				validEmail.add(a);
-//
-//			} else {
-//				invalidEmail.add(a);
-//			}
-//		}
-//		System.out.println("\n-Valid Email- :");
-//		for (String a : validEmail)
-//			System.out.println(a);
-//
-//		System.out.println("\n-InValid Email- :");
-//		for (String a : invalidEmail)
-//			System.out.println(a);
-//		sf.close();
-//	}
+	public boolean readFile() throws FileNotFoundException
+	{
+	     File file = new File("C:\\Users\\ABHISHEK RAWANE\\eclipse-workspace\\UserRegistration\\src\\com\\bridgelabz\\UserRegistration\\differentEmailsResults.txt");
+				
+		Scanner sf = new Scanner(file);
+
+		String emails = null;
+		while (sf.hasNextLine())
+			emails = sf.nextLine();
+		System.out.println("Total email:-\n" + emails);
+
+		String[] emailArr = emails.split(",");
+		List<String> validEmail = new ArrayList<>();
+		List<String> invalidEmail = new ArrayList<>();
+
+		for (String a : emailArr) {
+			boolean check = a.matches(EMAIL_PATTERN);
+			if (check == true) {
+				validEmail.add(a);
+
+			}
+			else 
+			{
+				invalidEmail.add(a);
+			}
+		}
+		System.out.println("\n-Valid Email- :");
+		for (String a : validEmail)
+			System.out.println(a);
+
+		System.out.println("\n-InValid Email- :");
+		for (String a : invalidEmail)
+			System.out.println(a);
+		sf.close();
+		return false;
+	}
 }

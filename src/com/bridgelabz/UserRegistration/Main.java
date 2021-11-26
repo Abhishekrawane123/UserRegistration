@@ -13,20 +13,21 @@ public class Main {
 			UserRegistration userData=UserRegistration.getInstance();
 	    
 			PatternCheck pc = PatternCheck.getInstance();
-			pc.addFirstName("Abhi"); 
-			pc.addLastName("Rawane");
-			pc.addEmail("abhishekrawane1195@gmail.com");
-			pc.addPhoneNumber("8269585463");
-			pc.addPassword("Raw123*");
+//			pc.addFirstName("Abhi"); 
+//			pc.addLastName("Rawane");
+//			pc.addEmail("abhishekrawane1195@gmail.com");
+//			pc.addPhoneNumber("8269585463");
+//			pc.addPassword("Raw123*");
+			pc.readFile();
 	
 			
 	
 //			userValidation.addEmail(); // Email Adding
 //			user.email = userData.getEmail();
-	//
+//	
 //			userValidation.addPhoneNumber(); // Phone Number Adding
 //			user.phoneNumber = userData.getPhoneNumber();
-	//
+//	
 //			userValidation.addPassword(); // Password Adding
 //			user.password = userData.getPassword();
 //			user.display();

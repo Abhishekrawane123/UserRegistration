@@ -1,5 +1,7 @@
 package com.bridgelabz.UserRegistration;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Test;
 
 public class PatternCheckTest 
@@ -38,5 +40,12 @@ public class PatternCheckTest
 	 {
 		PatternCheck pc = PatternCheck.getInstance();
        boolean result = pc.addPassword("Raw123*");
+	 }
+	
+	@Test
+	 public void readFile() throws FileNotFoundException
+	 {
+		PatternCheck pc = PatternCheck.getInstance();
+      boolean result = pc.readFile();
 	 }
 }
