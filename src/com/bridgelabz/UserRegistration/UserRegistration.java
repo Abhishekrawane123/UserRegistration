@@ -1,63 +1,35 @@
 package com.bridgelabz.UserRegistration;
 
-public class UserRegistration 
-{
-		public static UserRegistration instance;
-		private String firstName;
-		private String lastName;
-		private String email;
-		private String password;
-		private String phoneNumber;
+import java.io.FileNotFoundException;
 
-		public UserRegistration() {
+public class UserRegistration {
 
-		}
+	private String firstName, lastName, email, password, phoneNumber;
 
-		public static UserRegistration getInstance() {
-			if (instance == null) {
-				instance = new UserRegistration();
-			}
-			return instance;
-		}
+	public static void main(String[] args) throws FileNotFoundException {
+		UserRegistration user = new UserRegistration();
+		UserData userData = UserData.getInstance();
+		UserValidation userValidation = UserValidation.getInstance();
+	userValidation.addFirstName(); // First Name Adding
+	user.firstName = userData.getFirstName();
 
-		public String getFirstName() {
-			return firstName;
-		}
+		userValidation.addLastName(); // Last Name Adding
+		user.lastName = userData.getLastName();
 
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
+		userValidation.addEmail(); // Email Adding
+		user.email = userData.getEmail();
 
-		public String getLastName() {
-			return lastName;
-		}
+		userValidation.addPhoneNumber(); // Phone Number Adding
+		user.phoneNumber = userData.getPhoneNumber();
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
+		userValidation.addPassword(); // Password Adding
+		user.password = userData.getPassword();
+		user.display();
+		userValidation.readFile();
+	}
 
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-		public String getPassword() {
-			return password;
-		}
-
-		public void setPassword(String password) {
-			this.password = password;
-		}
-
-		public String getPhoneNumber() {
-			return phoneNumber;
-		}
-
-		public void setPhoneNumber(String phoneNumber) {
-			this.phoneNumber = phoneNumber;
-		}
-
+	private void display() {
+		System.out.println("\nUser Data:-\n\tFirst Name : " + firstName + "\n\tLast Name : " + lastName + "\n\tEmail : "
+				+ email + "\n\tPhone Number : " + phoneNumber + "\n\tPassword : " + password);
+	}
 }
